@@ -1,4 +1,3 @@
-
 import discord
 from discord.ext import commands
 import asyncio
@@ -6,10 +5,12 @@ import time
 import math
 import os
 
+
 import trivia_version_1_2_2
 
 #client = discord.Client()
 bot = commands.Bot(command_prefix = ["n!", "n1", "b2", "n2", "N!", "N1", "B2", "N2"] , description = "A super trivia bot that tries not to suck too much.")
+
 '''
 regional_indicator_a = "\U0001F1E6"
 regional_indicator_b = "\U0001F1E7"
@@ -213,7 +214,7 @@ async def trivia(ctx, *, category_name = None):
 				if time_remaining == 0:
 					if doing_trivia:
 						await asyncio.sleep(1)
-						last_msg = await ctx.channel.history().get(author__name = "Super Trivia")
+						last_msg = await ctx.channel.history().get(author__name = bot.user.name)
 						#where >> is used in the message where the user already reacted on time
 						if ">>" not in str(last_msg.content):
 							await ctx.channel.send(str(ctx.author.mention) + " you took too long to answer. The correct answer was " + "**" + solution[3:] + "**")
@@ -247,7 +248,6 @@ async def on_ready():
 	print("With the ID: " + str(bot.user.id))
 
 	await bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "David stuck in Plat. [n!]"))
-
 
 
 
