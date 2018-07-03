@@ -4,7 +4,7 @@ from discord.ext import commands
 import asyncio
 import time
 import math
-
+import os
 
 import trivia_version_1_2_2
 
@@ -250,7 +250,8 @@ async def on_ready():
 
 
 
-bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.Dgb5rQ.9o1Ir3Rch0I46nWclwaM1b6xfrc")
+
+bot.run(str(os.environ.get("BOT_TOKEN")))
 
 
 '''
