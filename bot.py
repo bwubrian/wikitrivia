@@ -184,7 +184,7 @@ async def trivia(ctx, *, category_name = None):
 		start_time = time.time()
 
 
-		msg = await ctx.channel.history().get(author__name = "Super Trivia")
+		msg = await ctx.channel.history().get(author__name = bot.user.name)
 		global trivia_question_message
 		trivia_question_message = msg
 		await msg.add_reaction(regional_indicator_a)
