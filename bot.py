@@ -183,7 +183,7 @@ async def trivia(ctx, *, category_name = None):
 
 		start_time = time.time()
 
-
+		await asyncio.sleep(1)
 		msg = await ctx.channel.history().get(author__name = bot.user.name)
 		global trivia_question_message
 		trivia_question_message = msg
@@ -211,7 +211,7 @@ async def trivia(ctx, *, category_name = None):
 					embeded_question = discord.Embed(title="",description="**"+question+"**" + "\n\n" + answer_choices + "\n\n", colour=color)
 					embeded_question.set_footer(text = time_warning)
 					await msg.edit(embed = embeded_question)
-				if time_remaining == 0:
+				if time_remaining <= 0:
 					if doing_trivia:
 						await asyncio.sleep(1)
 						last_msg = await ctx.channel.history().get(author__name = bot.user.name)
