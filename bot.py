@@ -11,6 +11,8 @@ import trivia_version_1_2_2
 #client = discord.Client()
 bot = commands.Bot(command_prefix = ["n!", "n1", "b2", "n2", "N!", "N1", "B2", "N2"] , description = "A super trivia bot that tries not to suck too much.")
 
+
+
 '''
 regional_indicator_a = "\U0001F1E6"
 regional_indicator_b = "\U0001F1E7"
@@ -39,8 +41,8 @@ global_answer_choices_list = None
 
 nsfw_filter = True
 
-@bot.command()
-async def say(ctx, *, something = None):
+@bot.command(aliases = ["say"])
+async def echo(ctx, *, something = None):
 	"""Prints the given string."""
 	if something is not None:
 		await ctx.send(something)
@@ -264,22 +266,36 @@ async def nsfw(ctx, *, nsfw_filter_status = None):
 	Use "False" or "Off" to turn off filter, "True" or "On" to turn back on. Needs administrator permission. 
 		
 	"""
-	print(ctx.message.author.permissions_in(ctx.channel))
-	print(ctx.message.author.guild_permissions.administrator)
+	#print(ctx.message.author.permissions_in(ctx.channel))
+	#print(ctx.message.author.guild_permissions.administrator)
 	if ctx.message.author.guild_permissions.administrator:
-		global nsfw_filter
-		if nsfw_filter_status == None:
-			nsfw_filter =  not nsfw_filter
-			await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
-		else:
-			if nsfw_filter_status.lower() == "false" or nsfw_filter_status.lower() == "off":
-				nsfw_filter = False
+		if ctx.channel.is_nsfw():
+			global nsfw_filter
+			if nsfw_filter_status == None:
+				nsfw_filter =  not nsfw_filter
 				await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
 			else:
-				nsfw_filter = True
-				await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
+				if nsfw_filter_status.lower() == "false" or nsfw_filter_status.lower() == "off":
+					nsfw_filter = False
+					await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
+				else:
+					nsfw_filter = True
+					await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
+		else:
+			await ctx.channel.send(str(ctx.author.mention) + " this is NOT a NSFW channel.")
 	else:
 		await ctx.channel.send(str(ctx.author.mention) + " you do not have administrator permission to do this.")
+
+'''
+@bot.command()
+async def help(ctx, *, something = None):
+	"""This is the help command."""
+	embed discord.Embed(title="",description="**"+question+"**" + "\n\n" + answer_choices + "\n\n", colour=color)
+	await ctx.channel.send(embed = embeded_question)
+'''
+
+
+
 
 @bot.event
 async def on_ready():
@@ -290,8 +306,8 @@ async def on_ready():
 
 
 
-bot.run(str(os.environ.get("BOT_TOKEN")))
-#bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
+#bot.run(str(os.environ.get("BOT_TOKEN")))
+bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
 
 
 
