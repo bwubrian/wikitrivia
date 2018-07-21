@@ -37,6 +37,8 @@ global_solution_reaction = None
 global_solution = None
 global_answer_choices_list = None
 
+nsfw_filter = True
+
 @bot.command()
 async def say(ctx, *, something = None):
 	"""Prints the given string."""
@@ -116,8 +118,13 @@ async def on_reaction_add(reaction, user):
 @bot.command(aliases = ["t", "question"])
 async def trivia(ctx, *, category_name = None):
 	"""Generates a trivia question.
-	Can either take an argument to specify a category(ie. Video Games, Memes, History)
-	or called without argument for random category
+	
+	Without additional arguments, a random question is generated.
+
+	A category can be passed generate a question somewhat related to the given category.
+	(ie. Video Games, Food, History)
+	
+	"[ - - - - - - - ]" is sometimes used in the question to hide info that would give away the answer.
 		
 	"""
 	potential_trivia_user = ctx.message.author
@@ -133,6 +140,13 @@ async def trivia(ctx, *, category_name = None):
 		if category_name is None:		
 			returned_question = trivia_version_1_2_2.get_question()
 		else:
+			if nsfw_filter == True:
+				with open('full-list-of-bad-words-text-file_2018_03_26.txt') as file:
+				    contents = file.read()
+				    if category_name in contents:
+				    	await ctx.channel.send(str(ctx.author.mention) + " >> " + "[NSFW]" + " No trivia questions successfully generated for this category.")
+				    	doing_trivia = False
+				    	return None
 			returned_question = trivia_version_1_2_2.get_question_given_category(category_name)
 			if returned_question is None:
 				await ctx.channel.send(str(ctx.author.mention) + " >> " + "No trivia questions successfully generated for this category.")
