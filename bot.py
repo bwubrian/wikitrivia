@@ -141,9 +141,12 @@ async def trivia(ctx, *, category_name = None):
 			returned_question = trivia_version_1_2_2.get_question()
 		else:
 			if nsfw_filter == True:
-				with open('full-list-of-bad-words-text-file_2018_03_26.txt', encoding='utf-16') as file:
-				    contents = file.read()
-				    if category_name in contents:
+				contents = []
+				with open('full-list-of-bad-words-text-file_2018_03_26.txt') as file:
+				    for line in file:
+				    	contents.append(line.rstrip())
+				    #print(contents)
+				    if category_name.lower() in contents:
 				    	await ctx.channel.send(str(ctx.author.mention) + " >> " + "[NSFW]" + " No trivia questions successfully generated for this category.")
 				    	doing_trivia = False
 				    	return None
@@ -278,8 +281,8 @@ async def on_ready():
 
 
 
-bot.run(str(os.environ.get("BOT_TOKEN")))
-#bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
+#bot.run(str(os.environ.get("BOT_TOKEN")))
+bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
 
 
 
