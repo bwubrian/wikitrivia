@@ -256,8 +256,13 @@ async def trivia(ctx, *, category_name = None):
 
 @bot.command(aliases = ["filter"])
 async def nsfw(ctx, *, nsfw_filter_status):
+	"""Toggles the Not Safe For Work filter to be on or off.
+	
+	Use "False" or "Off" to turn off filter, "True" or "On" to turn back on.
+		
+	"""
 	global nsfw_filter
-	if nsfw_filter_status.lower() == "False" or nsfw_filter_status.lower() == "Off":
+	if nsfw_filter_status.lower() == "false" or nsfw_filter_status.lower() == "off":
 		nsfw_filter = False
 		await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
 	else:
@@ -273,7 +278,9 @@ async def on_ready():
 
 
 
-bot.run(str(os.environ.get("BOT_TOKEN")))
+#bot.run(str(os.environ.get("BOT_TOKEN")))
+bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
+
 
 
 '''
