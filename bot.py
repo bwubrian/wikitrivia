@@ -259,18 +259,23 @@ async def trivia(ctx, *, category_name = None):
 
 @bot.command(aliases = ["filter"])
 async def nsfw(ctx, *, nsfw_filter_status):
-	"""Toggles the Not Safe For Work filter to be on or off.
+	"""Toggles the Not Safe For Work filter to be on or off. 
 	
-	Use "False" or "Off" to turn off filter, "True" or "On" to turn back on.
+	Use "False" or "Off" to turn off filter, "True" or "On" to turn back on. Needs administrator permission. 
 		
 	"""
-	global nsfw_filter
-	if nsfw_filter_status.lower() == "false" or nsfw_filter_status.lower() == "off":
-		nsfw_filter = False
-		await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
+	print(ctx.message.author.permissions_in(ctx.channel))
+	print(ctx.message.author.guild_permissions.administrator)
+	if ctx.message.author.guild_permissions.administrator:
+		global nsfw_filter
+		if nsfw_filter_status.lower() == "false" or nsfw_filter_status.lower() == "off":
+			nsfw_filter = False
+			await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
+		else:
+			nsfw_filter = True
+			await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
 	else:
-		nsfw_filter = True
-		await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
+		await ctx.channel.send(str(ctx.author.mention) + " you do not have administrator permission to do this.")
 
 @bot.event
 async def on_ready():
@@ -281,8 +286,8 @@ async def on_ready():
 
 
 
-bot.run(str(os.environ.get("BOT_TOKEN")))
-#bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
+#bot.run(str(os.environ.get("BOT_TOKEN")))
+bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
 
 
 
