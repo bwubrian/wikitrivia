@@ -45,7 +45,7 @@ async def say(ctx, *, something = None):
 	if something is not None:
 		await ctx.send(something)
 	else:
-		await ctx.send("lol you're pretty bad at this, use the *say* command with argument, such as: **n!say ooglyoogly**")
+		await ctx.send("Use the *say* command with an argument, such as: **n!say ooglyoogly**")
 
 #hard coded... i give up
 def format_solution_reaction(solution_letter):
@@ -258,9 +258,9 @@ async def trivia(ctx, *, category_name = None):
 			await execute_trivia()
 
 @bot.command(aliases = ["filter"])
-async def nsfw(ctx, *, nsfw_filter_status):
+async def nsfw(ctx, *, nsfw_filter_status = None):
 	"""Toggles the Not Safe For Work filter to be on or off. 
-	
+
 	Use "False" or "Off" to turn off filter, "True" or "On" to turn back on. Needs administrator permission. 
 		
 	"""
@@ -268,12 +268,16 @@ async def nsfw(ctx, *, nsfw_filter_status):
 	print(ctx.message.author.guild_permissions.administrator)
 	if ctx.message.author.guild_permissions.administrator:
 		global nsfw_filter
-		if nsfw_filter_status.lower() == "false" or nsfw_filter_status.lower() == "off":
-			nsfw_filter = False
+		if nsfw_filter_status == None:
+			nsfw_filter =  not nsfw_filter
 			await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
 		else:
-			nsfw_filter = True
-			await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
+			if nsfw_filter_status.lower() == "false" or nsfw_filter_status.lower() == "off":
+				nsfw_filter = False
+				await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
+			else:
+				nsfw_filter = True
+				await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
 	else:
 		await ctx.channel.send(str(ctx.author.mention) + " you do not have administrator permission to do this.")
 
@@ -286,8 +290,8 @@ async def on_ready():
 
 
 
-bot.run(str(os.environ.get("BOT_TOKEN")))
-#bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
+#bot.run(str(os.environ.get("BOT_TOKEN")))
+bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
 
 
 
