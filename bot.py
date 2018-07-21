@@ -254,7 +254,15 @@ async def trivia(ctx, *, category_name = None):
 			global_trivia_user = potential_trivia_user
 			await execute_trivia()
 
-
+@bot.command(aliases = ["filter"])
+async def nsfw(ctx, *, nsfw_filter_status):
+	global nsfw_filter
+	if nsfw_filter_status.lower() == "False" or nsfw_filter_status.lower() == "Off":
+		nsfw_filter = False
+		await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
+	else:
+		nsfw_filter = True
+		await ctx.channel.send("Trivia NSFW filter set to " + str(nsfw_filter))
 
 @bot.event
 async def on_ready():
