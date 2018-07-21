@@ -141,7 +141,7 @@ async def trivia(ctx, *, category_name = None):
 			returned_question = trivia_version_1_2_2.get_question()
 		else:
 			if nsfw_filter == True:
-				with open('full-list-of-bad-words-text-file_2018_03_26.txt', 'rb') as file:
+				with open('full-list-of-bad-words-text-file_2018_03_26.txt', 'encoding='utf-16') as file:
 				    contents = file.read()
 				    if category_name in contents:
 				    	await ctx.channel.send(str(ctx.author.mention) + " >> " + "[NSFW]" + " No trivia questions successfully generated for this category.")
