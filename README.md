@@ -1,24 +1,29 @@
 # wikitrivia
 
 Wikipedia Trivia Bot
+
 Unlike most trivia bots, this bot does not take questions from a small, repetative trivia question bank.
 
 Instead, trivia is generated from Wikipedia pages.
 
-Advantages
+Advantages:
+
 Not repetative, massive array of questions, allows for interesting custom categories
 
-Disadvantages
+Disadvantages:
+
 The quality of the generated trivia questions is not always the best
 
-Features
+Features:
+
 Multiple-choice
 
 Timed questions
 
 Generate trivia from custom categories such as "food" or "esports"
 
-Commands
+Commands:
+
 n!help for help
 
 n!trivia for trivia of random category
