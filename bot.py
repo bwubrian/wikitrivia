@@ -44,6 +44,9 @@ nsfw_filter = True
 @bot.command(aliases = ["say"])
 async def echo(ctx, *, something = None):
 	"""Prints the given string."""
+	if ctx.guild.name == "test bot":
+		await bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "David stuck in Plat. [n!]"))
+
 	if something is not None:
 		await ctx.send(something)
 	else:
@@ -302,12 +305,13 @@ async def on_ready():
 	print("I am running on " + bot.user.name)
 	print("With the ID: " + str(bot.user.id))
 
-	await bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "David stuck in Plat. [n!]"))
+
+	await bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "[n!help]"))
 
 
 
-bot.run(str(os.environ.get("BOT_TOKEN")))
-#bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
+#bot.run(str(os.environ.get("BOT_TOKEN")))
+bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
 
 
 
