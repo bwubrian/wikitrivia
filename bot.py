@@ -50,7 +50,7 @@ async def echo(ctx, *, something = None):
 	if something is not None:
 		await ctx.send(something)
 	else:
-		await ctx.send("Use the *say* command with an argument, such as: **n!say ooglyoogly**")
+		await ctx.send("Use the *echo* command with an argument, such as: **n!echo hello**")
 
 #hard coded... i give up
 def format_solution_reaction(solution_letter):
