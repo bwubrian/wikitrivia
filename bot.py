@@ -42,10 +42,12 @@ global_answer_choices_list = None
 
 nsfw_filter = True
 
+known_servers = ["test bot", "Lemon Tree"]
+
 @bot.command(aliases = ["say"])
 async def echo(ctx, *, something = None):
 	"""Prints the given string."""
-	if ctx.guild.name == "Lemon Tree":
+	if ctx.guild.name in known_servers:
 		await bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "David stuck in Plat. [n!]"))
 
 	if something is not None:
@@ -55,9 +57,9 @@ async def echo(ctx, *, something = None):
 
 @bot.command()
 async def lemontree(ctx, *, name = None):
-	"""Prints the given string."""
+	"""n/a"""
 	region = 'na1'
-	if ctx.guild.name == "Lemon Tree":
+	if ctx.guild.name in known_servers:
 		if name is not None:
 			if name == "davidrank":
 				data = leaguebot_version_0.get_summoner_rank("Ihei Hairu", region)
@@ -89,10 +91,8 @@ async def lemontree(ctx, *, name = None):
 					await ctx.channel.send("Up and coming talent, silver II hopeful, shows much promise.")
 			else:
 				await ctx.channel.send("This is not a lemon.")
-		else:
-			await ctx.channel.send("No u")
 	else:
-		await ctx.send("That command is not available here.")
+		await ctx.send("That command is currently not available here.")
 		
 	
 
