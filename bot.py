@@ -7,6 +7,7 @@ import os
 
 
 import trivia_version_1_2_2
+import leaguebot_version_0
 
 #client = discord.Client()
 bot = commands.Bot(command_prefix = ["n!", "n1", "b2", "n2", "N!", "N1", "B2", "N2"] , description = "A super trivia bot that tries not to suck too much.")
@@ -51,6 +52,49 @@ async def echo(ctx, *, something = None):
 		await ctx.send(something)
 	else:
 		await ctx.send("Use the *echo* command with an argument, such as: **n!echo hello**")
+
+@bot.command()
+async def lemontree(ctx, *, name = None):
+	"""Prints the given string."""
+	region = 'na1'
+	if ctx.guild.name == "test bot":
+		if name is not None:
+			if name == "davidrank":
+				data = leaguebot_version_0.get_summoner_rank("Ihei Hairu", region)
+				if data is not None:
+					await ctx.channel.send(data[0] + " is " + data[1] + " " + data[2] + " with " + str(data[3]) + "LP" + ", though he claims he was diamond once.")
+			elif name == "joerank":
+				data = leaguebot_version_0.get_summoner_rank("Joe Joe Joe Joe", region)
+				if data is not None:
+					await ctx.channel.send(data[0] + " is " + data[1] + " " + data[2] + " with " + str(data[3]) + "LP" + "")
+			elif name == "brucerank":
+				data = leaguebot_version_0.get_summoner_rank("Extreme A", region)
+				if data is not None:
+					await ctx.channel.send(data[0] + " is " + data[1] + " " + data[2] + " with " + str(data[3]) + "LP" + "")
+			elif name == "ericrank":
+				data = leaguebot_version_0.get_summoner_rank("Eric Vu", region)
+				if data is not None:
+					await ctx.channel.send(data[0] + " is " + data[1] + " " + data[2] + " with " + str(data[3]) + "LP" + "")
+			elif name == "jamesrank":
+				data = leaguebot_version_0.get_summoner_rank("Krandino", region)
+				if data is not None:
+					await ctx.channel.send(data[0] + " is " + data[1] + " " + data[2] + " with " + str(data[3]) + "LP" + "")
+				else:
+					await ctx.channel.send("this dude only play a:ascam:")
+			elif name == "brianrank":
+				data = leaguebot_version_0.get_summoner_rank("Ooglyoogly", region)
+				if data is not None:
+					await ctx.channel.send(data[0] + " is " + data[1] + " " + data[2] + " with " + str(data[3]) + "LP" + "")
+				else:
+					await ctx.channel.send("Up and coming talent, silver II hopeful, shows much promise.")
+			else:
+				await ctx.channel.send("This is not a lemon.")
+		else:
+			await ctx.channel.send("No u")
+	else:
+		await ctx.send("That command is not available here.")
+		
+	
 
 #hard coded... i give up
 def format_solution_reaction(solution_letter):
