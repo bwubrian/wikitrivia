@@ -45,7 +45,7 @@ nsfw_filter = True
 @bot.command(aliases = ["say"])
 async def echo(ctx, *, something = None):
 	"""Prints the given string."""
-	if ctx.guild.name == "test bot":
+	if ctx.guild.name == "Lemon Tree":
 		await bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "David stuck in Plat. [n!]"))
 
 	if something is not None:
@@ -57,7 +57,7 @@ async def echo(ctx, *, something = None):
 async def lemontree(ctx, *, name = None):
 	"""Prints the given string."""
 	region = 'na1'
-	if ctx.guild.name == "test bot":
+	if ctx.guild.name == "Lemon Tree":
 		if name is not None:
 			if name == "davidrank":
 				data = leaguebot_version_0.get_summoner_rank("Ihei Hairu", region)
