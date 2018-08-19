@@ -2,7 +2,7 @@ from riotwatcher import RiotWatcher
 from requests import HTTPError
 
 
-watcher = RiotWatcher('RGAPI-e0710767-a042-4dec-af3a-70eaf3005765')
+watcher = RiotWatcher('RGAPI-164c38e8-b25d-4718-b87c-63ad57625362')
 '''
 my_region = 'na1'
 
