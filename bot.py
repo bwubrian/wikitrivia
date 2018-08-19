@@ -345,7 +345,7 @@ async def help(ctx, *, something = None):
 async def set_cooldown(ctx, *, cooldown):
 	"""Changes trivia cooldown time(default 20 seconds). 
 
-	Needs administrator permission. 
+	Use with a number as argument(ie. "n!set_cooldown 30" to set to 30 seconds. Needs administrator permission. 
 		
 	"""
 	#print(ctx.message.author.permissions_in(ctx.channel))
@@ -354,7 +354,7 @@ async def set_cooldown(ctx, *, cooldown):
 		if cooldown.isdigit():
 			global TRIVIA_COOLDOWN
 			TRIVIA_COOLDOWN =  int(cooldown)
-			await ctx.channel.send("Trivia cooldown set to " + str(TRIVIA_COOLDOWN) + "seconds.")
+			await ctx.channel.send("Trivia cooldown set to " + str(TRIVIA_COOLDOWN) + " seconds.")
 		else:
 			await ctx.channel.send("Trivia cooldown must be set to an integer")
 	else:
@@ -364,7 +364,7 @@ async def set_cooldown(ctx, *, cooldown):
 async def set_time_limit(ctx, *, time_limit):
 	"""Changes questions time limit(default 10 seconds). 
 
-	Needs administrator permission. 
+	Use with a number as argument(ie. "n!set_time_limit 30" to set to 30 seconds. Needs administrator permission.
 		
 	"""
 	#print(ctx.message.author.permissions_in(ctx.channel))
@@ -373,7 +373,7 @@ async def set_time_limit(ctx, *, time_limit):
 		if time_limit.isdigit():
 			global TRIVIA_TIMER
 			TRIVIA_TIMER =  int(time_limit)
-			await ctx.channel.send("Trivia time limit set to " + str(TRIVIA_TIMER) + "seconds.")
+			await ctx.channel.send("Trivia time limit set to " + str(TRIVIA_TIMER) + " seconds.")
 		else:
 			await ctx.channel.send("Trivia time limit must be set to an integer")
 	else:
@@ -391,7 +391,7 @@ async def on_ready():
 
 bot.run(str(os.environ.get("BOT_TOKEN")))
 #bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
-
+#bot.run("NDYzODAxNzY4ODEyMjE2MzMw.DjkDcQ.09yXdU36hPbl-DlYel0VR6QtHzM")
 
 
 '''
