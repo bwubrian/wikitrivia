@@ -6,15 +6,15 @@ Unlike most trivia bots, this bot does not take questions from a small, repetati
 
 Instead, trivia is generated from Wikipedia pages.
 
-Advantages:
+<h3>Advantages:</h3>
 
 Not repetative, massive array of questions, allows for interesting custom categories
 
-Disadvantages:
+<h3>Disadvantages:</h3>
 
 The quality of the generated trivia questions is not always the best
 
-Features:
+<h3>Features:</h3>
 
 Multiple-choice
 
@@ -22,7 +22,7 @@ Timed questions
 
 Generate trivia from custom categories such as "food" or "esports"
 
-Commands:
+<h3>Commands:</h3>
 
 n!help for help
 
