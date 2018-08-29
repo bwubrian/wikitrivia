@@ -1,6 +1,6 @@
 # wikitrivia
 
-Wikipedia Trivia Bot
+<h1>Wikipedia Trivia Bot</h1>
 
 Unlike most trivia bots, this bot does not take questions from a small, repetative trivia question bank.
 
