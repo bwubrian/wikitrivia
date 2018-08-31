@@ -390,12 +390,6 @@ async def on_ready():
 
 
 bot.run(str(os.environ.get("BOT_TOKEN")))
-#bot.run("NDU3NjMwNzM0NjE4ODUzMzc4.DjRIbA.EqAHcuRYNu0d2ie1eQb6KI_x08k")
-#bot.run("NDYzODAxNzY4ODEyMjE2MzMw.DjkDcQ.09yXdU36hPbl-DlYel0VR6QtHzM")
 
-
-'''
-bugs: cant handle multiple trivia calls at once
-'''
 
 
