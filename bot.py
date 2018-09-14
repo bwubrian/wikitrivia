@@ -62,7 +62,7 @@ async def lemontree(ctx, *, name = None):
 	if ctx.guild.name in known_servers:
 		if name is not None:
 			if name == "davidrank":
-				data = leaguebot_version_0.get_summoner_rank("Ihei Hairu", region)
+				data = leaguebot_version_0.get_summoner_rank("Later Tonight", region)
 				if data is not None:
 					await ctx.channel.send(data[0] + " is " + data[1] + " " + data[2] + " with " + str(data[3]) + "LP" + ", though he claims he was diamond once.")
 			elif name == "joerank":
