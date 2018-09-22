@@ -2,7 +2,7 @@ from riotwatcher import RiotWatcher
 from requests import HTTPError
 
 
-watcher = RiotWatcher('RGAPI-54d86ec7-2c2e-447f-a015-e1b7d2d3edbd')
+watcher = RiotWatcher(str(os.environ.get("LOL_API_KEY")))
 '''
 my_region = 'na1'
 
