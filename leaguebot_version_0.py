@@ -1,5 +1,6 @@
 from riotwatcher import RiotWatcher
 from requests import HTTPError
+import os
 
 
 watcher = RiotWatcher(str(os.environ.get("LOL_API_KEY")))
