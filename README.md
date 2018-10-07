@@ -6,6 +6,8 @@ Unlike most trivia bots, this bot does not take questions from a small, repetati
 
 Instead, trivia is generated from Wikipedia pages.
 
+<a href = "https://discordbots.org/bot/463801768812216330">Link</a>
+
 <h3>Advantages:</h3>
 
 Not repetative, massive array of questions, allows for interesting custom categories
