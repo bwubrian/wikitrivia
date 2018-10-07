@@ -37,4 +37,4 @@ n!trivia [category] for trivia related to category, with [category] being virtua
 
 
 
-<a href = "https://www.freewebheaders.com/full-list-of-bad-words-banned-by-google/">Banlist Source</a>
+<a href = "https://www.freewebheaders.com/full-list-of-bad-words-banned-by-google/"><small>Banlist Source</small></a>
