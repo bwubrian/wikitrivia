@@ -6,7 +6,7 @@ Unlike most trivia bots, this bot does not take questions from a small, repetati
 
 Instead, trivia is generated from Wikipedia pages.
 
-<a href = "https://discordbots.org/bot/463801768812216330">Link</a>
+<a href = "https://discordbots.org/bot/463801768812216330" target="_blank" >Add this bot to a Discord server to test out!</a>
 
 <h3>Advantages:</h3>
 
