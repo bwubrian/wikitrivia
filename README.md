@@ -37,4 +37,4 @@ n!trivia [category] for trivia related to category, with [category] being virtua
 
 
 
-full-list-of-bad-words-text-file_2018_03_26.txt downloaded from https://www.freewebheaders.com/full-list-of-bad-words-banned-by-google/
+<a href = "https://www.freewebheaders.com/full-list-of-bad-words-banned-by-google/">Banlist Source</a>
