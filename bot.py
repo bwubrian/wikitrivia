@@ -197,7 +197,7 @@ async def trivia(ctx, *, category_name = None):
 		else:
 			if nsfw_filter == True:
 				contents = []
-				with open('full-list-of-bad-words-text-file_2018_03_26.txt') as file:
+				with open('Assets/full-list-of-bad-words-text-file_2018_03_26.txt') as file:
 				    for line in file:
 				    	contents.append(line.rstrip())
 				    #print(contents)
