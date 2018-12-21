@@ -17,39 +17,54 @@ import leaguebot_version_0
 #client = discord.Client()
 bot = commands.Bot(command_prefix = ["n!", "n1", "b2", "n2", "N!", "N1", "B2", "N2"] , description = "A super trivia bot that tries not to suck too much.")
 
-dbl_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ2MzgwMTc2ODgxMjIxNjMzMCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTQ1MzQyODAwfQ.b5X1w5ZAKcMeyZcp9dDhXASh8XQVf8uSBqR6x2bkZms"
-
+dbl_token = str(os.environ.get("DBL_TOKEN"))
 servers_data = open("servers_data.txt", "w", encoding='utf-8')
-
+'''
 class DiscordBotsOrgAPI:
     """Handles interactions with the discordbots.org API"""
 
     def __init__(self, bot):
         self.bot = bot
-        self.token = dbl_token  # set this to your DBL token
-        self.dblpy = dbl.Client(self.bot, self.token, loop=bot.loop)
-        self.updating = bot.loop.create_task(self.update_stats())
+        self.token = dbl_token  #  set this to your DBL token
+        self.dblpy = dbl.Client(self.bot, self.token)
+        self.bot.loop.create_task(self.update_stats())
 
     async def update_stats(self):
         """This function runs every 30 minutes to automatically update your server count"""
-        await self.bot.is_ready()
-        while not bot.is_closed():
-            logger.info('Attempting to post server count')
-            try:
-                await self.dblpy.post_server_count()
-                logger.info('Posted server count ({})'.format(self.dblpy.guild_count()))
-                print(self.dblpy.guild_count())
-            except Exception as e:
-                logger.exception('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
-            await asyncio.sleep(180)
 
+        while True:
+        	if self.bot.is_ready():
+	            logger.info('attempting to post server count')
+	            print("in the loop")
+	            try:
+	                await self.dblpy.post_server_count()
+	                logger.info('posted server count ({})'.format(len(self.bot.guilds)))
+	                print("posted")
+	            except Exception as e:
+	                logger.exception('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
+	                print("failed to post")
+	            await asyncio.sleep(1800)
+	        else:
+	        	print("not ready")
+
+
+def setup(bot):
+    global logger
+    logger = logging.getLogger('bot')
+    bot.add_cog(DiscordBotsOrgAPI(bot))
+'''
+client_id = str(os.environ.get("CLIENT_ID"))
+url = "https://discordbots.org/api/bots/"+client_id+"/stats"
+headers = {"Authorization" : dbl_token}
+
+"""
 def setup(bot):
     global logger
     #logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
     #setattr(bot, "logger", logging.getLogger("kewl_name"))
     logger = logging.getLogger('bot')
     bot.add_cog(DiscordBotsOrgAPI(bot))
-
+"""
 
 '''
 regional_indicator_a = "\U0001F1E6"
@@ -250,6 +265,7 @@ async def trivia(ctx, *, category_name = None):
 	potential_trivia_user = ctx.message.author
 	print("Guild: "+ctx.guild.name.encode("utf-8").decode("utf-8"))
 	print("User: " +ctx.message.author.name+ctx.message.author.discriminator)
+
 	#global global_trivia_user
 	#global global_context
 	#global_context = ctx
@@ -469,8 +485,9 @@ async def on_ready():
 	print("I am running on " + bot.user.name)
 	print("With the ID: " + str(bot.user.id))
 	for x in bot.guilds:
-		#print(x.name.encode("utf-8"))
-		#print("Region: " + str(x.region) + " Members: " + str(len(x.members)))
+		
+		print(x.name.encode("utf-8"))
+		print("Region: " + str(x.region) + " Members: " + str(len(x.members)))
 		servers_data.write("Name: ")
 		servers_data.write(x.name.encode("utf-8").decode("utf-8"))
 		servers_data.write(" Region: " + str(x.region) + " Members: " + str(len(x.members)) + "\n")
@@ -478,21 +495,24 @@ async def on_ready():
 
 		servers[x] = Server(x)
 		#print(x.name)
-	#print("Total Number of Members: " + str(len(list(bot.get_all_members()))))
+	print("Total Number of Servers: "+ str(len(bot.guilds)) + "\n")
+	print("Total Number of Members: " + str(len(list(bot.get_all_members())))+ "\n")
 	servers_data.write("Total Number of Servers: "+ str(len(bot.guilds)) + "\n")
 	servers_data.write("Total Number of Members: " + str(len(list(bot.get_all_members()))) + "\n")
 	await bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = "[n!help]"))
+	
 	servers_data.close()
 
-
-
-	setup(bot)
+	payload = {"server_count"  : len(bot.guilds)}
+	async with aiohttp.ClientSession() as aioclient:
+		await aioclient.post(url, data=payload, headers=headers)
+	
+	#setup(bot)
 	#setup(bot)
 
 
 
 bot.run(str(os.environ.get("BOT_TOKEN")))
-
 
 
 #PLEASE USE THESE DOCS PLEASE PLEASE I'VE WASTED SO MUCH TIME
