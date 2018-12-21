@@ -248,7 +248,8 @@ async def trivia(ctx, *, category_name = None):
 		
 	"""
 	potential_trivia_user = ctx.message.author
-
+	print("Guild: "+ctx.guild.name.encode("utf-8").decode("utf-8"))
+	print("User: " +ctx.message.author.name+ctx.message.author.discriminator)
 	#global global_trivia_user
 	#global global_context
 	#global_context = ctx
