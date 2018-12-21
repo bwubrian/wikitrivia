@@ -2,6 +2,10 @@
 
 <h1>Wikipedia Trivia Bot</h1>
 
+<a href="https://discordbots.org/bot/463801768812216330" >
+  <img src="https://discordbots.org/api/widget/463801768812216330.svg" alt="Wiki Trivia" />
+</a>
+
 Unlike most trivia bots, this bot does not take questions from a small, repetative trivia question bank.
 
 Instead, trivia is generated from Wikipedia pages.
