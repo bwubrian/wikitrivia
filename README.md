@@ -34,6 +34,9 @@ n!trivia for trivia of random category
 
 n!trivia [category] for trivia related to category, with [category] being virtually anything not too specific
 
+n!set_time_limit to change the time limit of questions
+
+n!set_cooldown to change the minimum time in between questions
 
 <em>*Note: By default, no questions will be generated with NSFW content</em>
 
