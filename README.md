@@ -1,5 +1,3 @@
-# wikitrivia
-
 <h1>Wikipedia Trivia Bot</h1>
 
 <a href="https://discordbots.org/bot/463801768812216330" >
