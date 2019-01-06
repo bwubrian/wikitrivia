@@ -159,7 +159,7 @@ async def lemontree(ctx, *, name = None):
 				if data is not None:
 					await ctx.channel.send(data[0] + " is " + data[1] + " " + data[2] + " with " + str(data[3]) + "LP" + "")
 			elif name == "ericrank":
-				data = leaguebot_version_0.get_summoner_rank("Erîc", region)
+				data = leaguebot_version_0.get_summoner_rank("Eric Vu", region)
 				if data is not None:
 					await ctx.channel.send(data[0] + " is " + data[1] + " " + data[2] + " with " + str(data[3]) + "LP" + "")
 			elif name == "jamesrank":
